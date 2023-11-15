@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import axios from 'axios'
 
 
 const Home = () =>{
@@ -7,26 +7,39 @@ const Home = () =>{
     
     useEffect(()=>{
         const fetchWorkouts = async() =>{
-            const response = await fetch('/api/workouts')
-            const json = await response.json()
+            try{
 
-            if(response.ok)
+                const api = axios.create({
+                    baseURL: 'http://localhost:3000',
+                  });
+
+                const response = await api.get('/api/workouts')
+                const data = response.data
+
+                if(response.status === 200)
+                {
+                    setWorkouts(data.workouts);
+                }
+
+            } catch(error)
             {
-                setWorkouts(json)
+                console.log(error);
             }
+            
         }
         fetchWorkouts()
     },[])
-    return(
+    return (
         <div className="Home">
-            <div className="workouts">
-                {workouts && workouts.map((workout) => (
-                    <p key={workout._id}>{workout.title}</p>
-                ))}
-            </div>
-            <h2>Home</h2>
+          <h2>Home</h2>
+          <div className="workouts">
+            {console.log(workouts)}
+            {workouts !== null &&
+              workouts.map((workout) => <p key={workout._id}>{workout.title}</p>)}
+          </div>
         </div>
-    )
+      );
+      
 }
 
 export default Home;
