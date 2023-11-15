@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from 'axios'
+import WorkoutDetails from "../src/components/WorkoutDetails";
+import CreateWorkout from "../src/components/CreateWorkout";
 
 
 const Home = () =>{
@@ -35,8 +37,12 @@ const Home = () =>{
           <div className="workouts">
             {console.log(workouts)}
             {workouts !== null &&
-              workouts.map((workout) => <p key={workout._id}>{workout.title}</p>)}
+              workouts.map((workout) => (
+                <WorkoutDetails key={workout._id} workout={workout}/>
+              )
+                )}
           </div>
+          <CreateWorkout />
         </div>
       );
       

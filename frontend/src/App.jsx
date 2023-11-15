@@ -5,6 +5,9 @@ import './styles.css'
 import Home from "../pages/Home";
 import { Navbar } from "./components/navbar";
 function App() {
+
+
+
   return (
     <>
       <div className="App">
