@@ -10,14 +10,8 @@ const Home = () =>{
     useEffect(()=>{
         const fetchWorkouts = async() =>{
             try{
-
-                const api = axios.create({
-                    baseURL: 'http://localhost:3000',
-                  });
-
-                const response = await api.get('/api/workouts')
+                const response = await axios.get('http://localhost:3000/api/workouts')
                 const data = response.data
-
                 if(response.status === 200)
                 {
                     setWorkouts(data.workouts);

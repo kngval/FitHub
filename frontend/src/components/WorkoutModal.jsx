@@ -2,18 +2,24 @@ import React, { useState } from 'react';
 import Modal from 'react-modal'
 import axios from 'axios'
 function WorkoutModal({isOpen, onClose}) {
+    const [title,setTitle] = useState('')
+    const [load,setLoads] = useState('')
+    const [reps, setReps] = useState('')
     
     const handleSubmit = async(e) =>{
         e.preventDefault();
 
 
         try{
-            const response = await axios.post('/api/workouts',{
+            console.log('VITE_REACT_APP_API_URL:', import.meta.env.VITE_REACT_APP_API_URL);
+            const response = await axios.post(`${import.meta.env.VITE_REACT_APP_API_URL}/api/workouts`,{
                 title,
-                reps,
-                load
+                load,
+                reps
             })
             console.log('Response:', response.data)
+
+            onClose()
         } catch(error) {
             console.log(error);
         }
@@ -45,15 +51,15 @@ function WorkoutModal({isOpen, onClose}) {
   return (
     <Modal style={ModalStyles} isOpen={isOpen} onRequestClose={onClose} contentLabel='Create Workout'>
         <h1>Create A New Workout</h1>
-        <form action=""  method='POST'>
+        <form action=""  method='POST' onSubmit={handleSubmit}>
             <div >
-            <label style={labelStyle}>Workout: <input style={inputStyle} type="text" required/></label>
+            <label style={labelStyle}>Workout: <input style={inputStyle} type="text" value={title} onChange={(e) => setTitle(e.target.value)} required/></label>
 
-            <label style={labelStyle}>Loads (kg): <input style={inputStyle} type="number" /></label>
+            <label style={labelStyle}>Loads (kg): <input style={inputStyle} type="number" value={load} onChange={(e) => setLoads(e.target.value)}/></label>
 
-            <label style={labelStyle}>Reps: <input style={inputStyle} type="number" /></label>
+            <label style={labelStyle}>Reps: <input style={inputStyle} type="number" value={reps} onChange={(e) => setReps(e.target.value)}/></label>
             </div>
-            <button  type='submit' onSubmit={handleSubmit}>Create</button>
+            <button  type='submit'>Create</button>
         </form>
         <button onClick={onClose}>Close</button>
     </Modal>
