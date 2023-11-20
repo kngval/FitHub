@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal'
 import axios from 'axios'
-function WorkoutModal({isOpen, onClose}) {
+Modal.setAppElement('#root');
+
+function WorkoutModal({isOpen, onClose, onWorkoutAdded}) {
     const [title,setTitle] = useState('')
     const [load,setLoads] = useState('')
     const [reps, setReps] = useState('')
@@ -19,11 +21,19 @@ function WorkoutModal({isOpen, onClose}) {
             })
             console.log('Response:', response.data)
 
+            setTitle('');
+            setLoads('');
+            setReps('');
             onClose()
+            if(onWorkoutAdded)
+            {
+                onWorkoutAdded();
+            }
         } catch(error) {
             console.log(error);
         }
     }
+
 
 
     const ModalStyles = {
@@ -49,7 +59,7 @@ function WorkoutModal({isOpen, onClose}) {
 
 
   return (
-    <Modal style={ModalStyles} isOpen={isOpen} onRequestClose={onClose} contentLabel='Create Workout'>
+    <Modal appElement={document.getElementById('root')} style={ModalStyles} isOpen={isOpen} onRequestClose={onClose} contentLabel='Create Workout'>
         <h1>Create A New Workout</h1>
         <form action=""  method='POST' onSubmit={handleSubmit}>
             <div >

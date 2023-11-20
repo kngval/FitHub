@@ -7,6 +7,7 @@ const {
     deleteWorkout,
     updateWorkout
 } = require('../controllers/workoutController')
+
 router.get('/', getWorkouts)
 
 router.get('/:id',getSingleWorkout)

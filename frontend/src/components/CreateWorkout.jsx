@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import WorkoutModal from './WorkoutModal';
-function CreateWorkout() {
+
+function CreateWorkout({onWorkoutAdded}) {
     
     const [modalToggle,setModalToggle] = useState(false);
 
@@ -17,7 +18,7 @@ function CreateWorkout() {
     <div>
       <h1>For Creating new Workout!</h1>
       <button onClick={openModal}>Create A New Workout</button>
-      <WorkoutModal isOpen={modalToggle} onClose={closeModal}  />
+      <WorkoutModal  isOpen={modalToggle} onClose={closeModal}  onWorkoutAdded={onWorkoutAdded}/>
     </div>
   );
 }
