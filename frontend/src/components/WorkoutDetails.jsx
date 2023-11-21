@@ -32,6 +32,20 @@ function WorkoutDetails({workout,onWorkoutDelete}) {
   }
 
 
+  const handleSubmit = async() =>{
+    try {
+      const response = await axios.patch(`${import.meta.env.VITE_REACT_APP_API_URL}/api/workouts/${workout._id}`,{
+        title,
+        load,
+        reps
+      })
+
+      console.log(response.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <div className='workout-details'>
       <h4>{workout.title}</h4>
@@ -41,11 +55,14 @@ function WorkoutDetails({workout,onWorkoutDelete}) {
       <button onClick={handleDelete}>Delete Workout</button>
       <Modal appElement={document.getElementById('root')} isOpen={modalToggle} onRequestClose={closeModal}>
         <h1>Edit Workout</h1>
-      <form action="">
+      <form action="" onSubmit={handleSubmit}>
         <label>Workout: </label><input type="text" name='name' value={title} onChange={(e) => setTitle(e.target.value)} required/>
         <label>Load (kg):</label> <input type="number" name="load" value={load} onChange={(e) => setLoad(e.target.value)} />
         <label>Reps: </label><input type="number" name='reps' value={reps} onChange={(e) => setReps(e.target.value)}/>
+
+      <button type='submit'>Submit</button>
       </form>
+      <button>Close</button>
       </Modal>
     </div>
   );
