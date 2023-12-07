@@ -3,7 +3,7 @@ import './workout.css';
 import axios from 'axios'
 import Modal from 'react-modal'
 
-function WorkoutDetails({workout,onWorkoutDelete}) {
+function WorkoutDetails({workout}) {
 
   const [modalToggle,setModalToggle] = useState(false);
   const [title,setTitle] = useState('')
@@ -24,8 +24,6 @@ function WorkoutDetails({workout,onWorkoutDelete}) {
   
     try{
         const response = await axios.delete(`${import.meta.env.VITE_REACT_APP_API_URL}/api/workouts/${workout._id}`)
-        onWorkoutDelete()
-
     } catch (error){
       console.log(error);
     }

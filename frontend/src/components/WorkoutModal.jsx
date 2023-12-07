@@ -3,7 +3,7 @@ import Modal from 'react-modal'
 import axios from 'axios'
 Modal.setAppElement('#root');
 
-function WorkoutModal({isOpen, onClose, onWorkoutAdded}) {
+function WorkoutModal({isOpen, onClose}) {
     const [title,setTitle] = useState('')
     const [load,setLoads] = useState('')
     const [reps, setReps] = useState('')
@@ -13,7 +13,6 @@ function WorkoutModal({isOpen, onClose, onWorkoutAdded}) {
 
 
         try{
-            console.log('VITE_REACT_APP_API_URL:', import.meta.env.VITE_REACT_APP_API_URL);
             const response = await axios.post(`${import.meta.env.VITE_REACT_APP_API_URL}/api/workouts`,{
                 title,
                 load,
@@ -25,10 +24,7 @@ function WorkoutModal({isOpen, onClose, onWorkoutAdded}) {
             setLoads('');
             setReps('');
             onClose()
-            if(onWorkoutAdded)
-            {
-                onWorkoutAdded();
-            }
+            
         } catch(error) {
             console.log(error);
         }
@@ -46,7 +42,7 @@ function WorkoutModal({isOpen, onClose, onWorkoutAdded}) {
     }
 
     const labelStyle = {
-        display: 'block', // Make labels and inputs appear on separate lines
+        display: 'block', 
         marginBottom: '10px', // Add spacing between each label-input pair
         
       };

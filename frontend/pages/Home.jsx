@@ -32,14 +32,14 @@ const Home = () =>{
         <div className="Home">
           <h2>Home</h2>
           <div className="workouts">
-            <CreateWorkout onWorkoutAdded={fetchWorkouts}/>
+            <CreateWorkout />
             
             <div className="workout-list">
             {console.log(workouts)}
             {workouts.length === 0 && <h1>No Workouts</h1>}
             {workouts !== null &&
               workouts.map((workout) => (
-                <WorkoutDetails key={workout._id} workout={workout} onWorkoutDelete={fetchWorkouts}/>
+                <WorkoutDetails key={workout._id} workout={workout} />
               )
                 )}
                 </div>
