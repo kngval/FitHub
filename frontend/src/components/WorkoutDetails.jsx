@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import './workout.css';
 import axios from 'axios'
 import Modal from 'react-modal'
-
+import { useWorkoutsContext } from '../../hooks/useWorkoutsContext';
 function WorkoutDetails({workout}) {
-
+  const {dispatch} = useWorkoutsContext();
   const [modalToggle,setModalToggle] = useState(false);
   const [title,setTitle] = useState('')
   const [load,setLoad] = useState('')
@@ -24,6 +24,14 @@ function WorkoutDetails({workout}) {
   
     try{
         const response = await axios.delete(`${import.meta.env.VITE_REACT_APP_API_URL}/api/workouts/${workout._id}`)
+
+        const data = response.data
+
+        if(response.status === 200)
+        {
+          dispatch({type: "DELETE_WORKOUT", payload: data})
+        }
+
     } catch (error){
       console.log(error);
     }
@@ -52,6 +60,7 @@ function WorkoutDetails({workout}) {
       <button onClick={openModal}>Edit</button>
       <button onClick={handleDelete}>Delete Workout</button>
       <Modal appElement={document.getElementById('root')} isOpen={modalToggle} onRequestClose={closeModal}>
+
         <h1>Edit Workout</h1>
       <form action="" onSubmit={handleSubmit}>
         <label>Workout: </label><input type="text" name='name' value={title} onChange={(e) => setTitle(e.target.value)} required/>

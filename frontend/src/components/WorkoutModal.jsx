@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal'
 import axios from 'axios'
+import { useWorkoutsContext } from '../../hooks/useWorkoutsContext';
+
 Modal.setAppElement('#root');
 
 function WorkoutModal({isOpen, onClose}) {
     const [title,setTitle] = useState('')
     const [load,setLoads] = useState('')
     const [reps, setReps] = useState('')
-    
+    const { dispatch } = useWorkoutsContext();    
     const handleSubmit = async(e) =>{
         e.preventDefault();
 
@@ -18,13 +20,17 @@ function WorkoutModal({isOpen, onClose}) {
                 load,
                 reps
             })
+            const data = response.data
             console.log('Response:', response.data)
-
             setTitle('');
             setLoads('');
             setReps('');
             onClose()
             
+            if(response.status === 200){
+                dispatch({type: 'CREATE_WORKOUT', payload: data})
+            }
+
         } catch(error) {
             console.log(error);
         }
