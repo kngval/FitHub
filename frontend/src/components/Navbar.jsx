@@ -6,7 +6,7 @@ export const Navbar =()=>{
 
     return(
         <header>
-        <div className="container">
+        <div className="bg-blue-500 p-4">
             <Link to='/'>
                 <h1>Workout Buddy</h1>
             </Link>

@@ -46,7 +46,12 @@ function WorkoutDetails({workout}) {
         reps
       })
 
-      console.log(response.data)
+      const data = response.data;
+      
+      
+      if(response.status === 200) {
+        dispatch({type: 'EDIT_WORKOUT', payload: data })
+      }
     } catch (error) {
       console.log(error)
     }
@@ -69,7 +74,7 @@ function WorkoutDetails({workout}) {
 
       <button type='submit'>Submit</button>
       </form>
-      <button>Close</button>
+      <button onClick={closeModal}>Close</button>
       </Modal>
     </div>
   );
