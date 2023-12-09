@@ -15,7 +15,7 @@ function CreateWorkout({onWorkoutAdded}) {
     }
 
   return (
-    <div>
+    <div className=''>
       <h1>For Creating new Workout!</h1>
       <button onClick={openModal}>Create A New Workout</button>
       <WorkoutModal  isOpen={modalToggle} onClose={closeModal}  onWorkoutAdded={onWorkoutAdded}/>

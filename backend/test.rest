@@ -1,8 +1,14 @@
 GET http://localhost:3000/api/workouts/
 
-# POST http://localhost:3000/api/workouts/
-# Content-Type: application/json
-# {
-#     msg:"hello"
-# }
+###
+
+
+POST http://localhost:3000/api/workouts/
+Content-Type: application/json
+
+{
+    "title":"hello",
+    "reps" : 552213,
+    "load" : 123123
+}
  

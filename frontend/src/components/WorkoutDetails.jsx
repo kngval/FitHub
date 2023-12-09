@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './workout.css';
 import axios from 'axios'
 import Modal from 'react-modal'
 import { useWorkoutsContext } from '../../hooks/useWorkoutsContext';
@@ -58,7 +57,7 @@ function WorkoutDetails({workout}) {
   }
 
   return (
-    <div className='workout-details'>
+    <div className='bg-blue-200 p-4 rounded-md'>
       <h4>{workout.title}</h4>
       <p><strong>Load (kg): {workout.load}</strong></p>
       <p><strong>Reps: {workout.reps}</strong></p>
