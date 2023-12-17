@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 //PAGES
 import Home from "../pages/Home";
-import { Navbar } from "./components/navbar";
 import { WorkoutContextProvider } from "./context/WorkoutContext";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
+import Navbar from "./components/Navbar";
 
 function App() {
 

@@ -63,7 +63,7 @@ function WorkoutModal({isOpen, onClose}) {
   return (
     <Modal appElement={document.getElementById('root')} style={ModalStyles} isOpen={isOpen} onRequestClose={onClose} contentLabel='Create Workout'>
         <h1>Create A New Workout</h1>
-        <form action=""  method='POST' onSubmit={handleSubmit}>
+        <form className='text-center' action=""  method='POST' onSubmit={handleSubmit}>
             <div >
             <label style={labelStyle}>Workout: <input style={inputStyle} type="text" value={title} onChange={(e) => setTitle(e.target.value)} required/></label>
 

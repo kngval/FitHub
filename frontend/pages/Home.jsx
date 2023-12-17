@@ -33,7 +33,6 @@ const Home = () => {
   
   return (
     <div className="Home">
-      <h2>Home</h2>
         <CreateWorkout />
 
         <div className="grid m-8 gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
