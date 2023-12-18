@@ -10,8 +10,8 @@ const Navbar = () => {
         </Link>
         <nav>
           <div>
-            <Link className="border-2 border-black p-2 mr-4 rounded-xl" to="/login">Login</Link>
-            <Link className="border-2 border-black p-2 mr-4 rounded-xl" to="/signup">Signup</Link>
+            <Link className="bg-blue-500 text-white p-2 mr-4 " to="/login">Login</Link>
+            <Link className="bg-blue-500 text-white p-2 mr-4 " to="/signup">Signup</Link>
           </div>
         </nav>
       </div>

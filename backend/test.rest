@@ -11,4 +11,12 @@ Content-Type: application/json
     "reps" : 552213,
     "load" : 123123
 }
+
+###
+POST http://localhost:3000/api/user/signup/
+Content-Type: application/json 
  
+ {
+    "email": "jin@email.com",
+    "password": "ABCabc#123"
+ }

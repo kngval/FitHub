@@ -7,7 +7,6 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(email, password);
   };
   return (
     <form action="" onSubmit={handleSubmit} className="bg-white p-5 rounded-md max-w-md mx-auto mt-20 shadow-2xl">
