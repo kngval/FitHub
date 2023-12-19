@@ -1,12 +1,17 @@
 import { useState } from "react";
+import { useLogin } from "../hooks/useLogin";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const { login ,error, loading, success} = useLogin()
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    login(email,password)
+    setEmail('')
+    setPassword('')
+    
   };
   return (
     <form action="" onSubmit={handleSubmit} className="bg-white p-5 rounded-md max-w-md mx-auto mt-20 shadow-2xl">
@@ -31,9 +36,19 @@ const Login = () => {
   <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md w-full">
     Submit
   </button>
+  {error && (
+        <div className="w-full border-red bg-red-100 text-lg p-4 rounded-md mt-3">
+          {error}
+        </div>
+      )}
+      {success && (
+        <div className="w-full border-red bg-blue-100 text-lg p-4 rounded-md mt-3">
+          {success}
+        </div>
+      )}
 </form>
 
-
+    
   );
 };
 

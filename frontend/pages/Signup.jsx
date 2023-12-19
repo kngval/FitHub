@@ -4,12 +4,14 @@ import { useSignup } from "../hooks/useSignup";
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { signup, loading, error } = useSignup();
+  const { signup, loading, error, success } = useSignup();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     await signup(email, password);
+    setEmail("");
+    setPassword("");
   };
 
   return (
@@ -36,13 +38,17 @@ const Signup = () => {
       <button
         className="bg-blue-500 text-white px-4 py-2 rounded-md w-full"
         type="submit"
-        
       >
         Submit
       </button>
       {error && (
         <div className="w-full border-red bg-red-100 text-lg p-4 rounded-md mt-3">
           {error}
+        </div>
+      )}
+      {success && (
+        <div className="w-full border-red bg-blue-100 text-lg p-4 rounded-md mt-3">
+          {success}
         </div>
       )}
     </form>

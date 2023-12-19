@@ -1,19 +1,19 @@
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
 import axios from "axios";
-export const useSignup = () => {
+export const useLogin = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(null);
   const [success,setSuccess] = useState(null)
   const { dispatch } = useAuthContext();
 
-  const signup = async (email, password) => {
+  const login = async (email, password) => {
     setLoading(true);
     setError(null);
 
     try {
       const response = await axios.post(
-        `http://localhost:3000/api/user/signup`,
+        `http://localhost:3000/api/user/login`,
         { email, password }
       );
 
@@ -22,7 +22,7 @@ export const useSignup = () => {
       if (response.status >= 200 && response.status < 300) {
         //save locally
         localStorage.setItem("user", JSON.stringify(data));
-        setSuccess('Signup Successful!')
+        setSuccess('Login Successful!')
         dispatch({ type: "LOGIN", payload: data });
       } 
       else{
@@ -35,5 +35,5 @@ export const useSignup = () => {
     }
   };
 
-  return { signup, loading, error, success };
+  return { login, loading, error, success };
 };
