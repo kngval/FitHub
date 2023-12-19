@@ -8,9 +8,14 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    login(email,password)
-    setEmail('')
-    setPassword('')
+    try{
+
+      login(email,password)
+      setEmail('')
+      setPassword('')
+    } catch (error){
+      console.log(error)
+    }
     
   };
   return (
