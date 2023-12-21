@@ -5,16 +5,16 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login ,error, loading, success} = useLogin()
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
 
     try{
 
-      login(email,password)
+      await login(email,password)
       setEmail('')
       setPassword('')
     } catch (error){
-      console.log(error)
+      console.log("CATCHED ERROR AT LOGIN: ", error)
     }
     
   };

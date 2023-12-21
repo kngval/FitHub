@@ -22,8 +22,8 @@ export const useLogin = () => {
       if (response.status >= 200 && response.status < 300) {
         //save locally
         localStorage.setItem("user", JSON.stringify(data));
-        setSuccess('Login Successful!')
         dispatch({ type: "LOGIN", payload: data });
+        setSuccess('Login Successful!')
       } 
       else{
         setSuccess(null)
