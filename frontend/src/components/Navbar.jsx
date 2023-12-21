@@ -18,7 +18,7 @@ const Navbar = () => {
         <nav>
           {user && (
             <div>
-              <span>{user.email}</span>
+              <span className="mr-2">{user.email}</span>
               <button
                 onClick={handleClick}
                 className="bg-blue-500 text-white p-1.5 1111 mr-4 "
