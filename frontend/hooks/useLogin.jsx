@@ -27,10 +27,9 @@ export const useLogin = () => {
       } 
       else{
         setSuccess(null)
-
       }
     } catch (error) {
-      console.log("Catched ERROR: ", error.response.data);
+      console.log("Catched ERROR: ", error.response.data.error);
       setError(error.response.data.error)
     }
   };
