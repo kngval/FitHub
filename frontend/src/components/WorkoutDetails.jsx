@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import axios from 'axios'
 import Modal from 'react-modal'
 import { useWorkoutsContext } from '../../hooks/useWorkoutsContext';
+import { useAuthContext } from '../../hooks/useAuthContext';
 function WorkoutDetails({workout}) {
   const {dispatch} = useWorkoutsContext();
   const [modalToggle,setModalToggle] = useState(false);
   const [title,setTitle] = useState('')
   const [load,setLoad] = useState('')
   const [reps,setReps] = useState('')
-
+  const { user } = useAuthContext();
 
     const openModal = () => {
         setModalToggle(true)
@@ -22,7 +23,14 @@ function WorkoutDetails({workout}) {
 
   
     try{
-        const response = await axios.delete(`${import.meta.env.VITE_REACT_APP_API_URL}/api/workouts/${workout._id}`)
+      if(!user){
+        return
+      }
+        const response = await axios.delete(`${import.meta.env.VITE_REACT_APP_API_URL}/api/workouts/${workout._id}`,{
+          headers:{
+            'Authorization': `Bearer ${user.token}`
+          }
+        })
 
         const data = response.data
 
