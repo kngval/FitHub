@@ -3,14 +3,21 @@ import axios from "axios";
 import WorkoutDetails from "../src/components/WorkoutDetails";
 import CreateWorkout from "../src/components/CreateWorkout";
 import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 const Home = () => {
   const { workouts, dispatch } = useWorkoutsContext();
-
+  const { user } = useAuthContext();
+  
   useEffect(() => {
+    
     const fetchWorkouts = async () => {
       try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_REACT_APP_API_URL}/api/workouts`
+      const response = await axios.get(
+          `${import.meta.env.VITE_REACT_APP_API_URL}/api/workouts`,{
+            headers:{
+              'Authorization': `Bearer ${user.token}`
+            }
+          }
         );
         const initData = response.data;
         const data = initData.workouts
@@ -23,9 +30,10 @@ const Home = () => {
         console.log("CATCHED ERROR", error);
       }
     };
-
-    fetchWorkouts();
-  }, []);
+    if(user){
+      fetchWorkouts();
+    }
+  }, [dispatch,user]);
   
 
 
