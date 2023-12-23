@@ -6,8 +6,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 body{
     background-color: #0f0f0f;
-    color: #fff;
+    color: #ffffff;
     font-family: 'Roboto Mono', monospace;
+}
+
+.workoutDetails{
+    border:2px solid #ce0000 ;
+}
+
+.logout{
+    border: 2px solid #ce0000;
+}
+.modal{
+    background-color: #1f0000;
+}
+.create,.loginBtn,.signupBtn{
+    border: 2px solid #ce0000;
+}
+.submitBtn{
+    background-color: #ce0000;
+}
+
+input{
+    background: #000;
 }
 
 
