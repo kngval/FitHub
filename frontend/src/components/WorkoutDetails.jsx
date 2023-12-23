@@ -65,7 +65,7 @@ function WorkoutDetails({workout}) {
   }
 
   return (
-    <div className='bg-blue-200 p-4 rounded-md'>
+    <div className=' p-4 rounded-md shadow-2xl'>
       <h4>{workout.title}</h4>
       <p><strong>Load (kg): {workout.load}</strong></p>
       <p><strong>Reps: {workout.reps}</strong></p>
