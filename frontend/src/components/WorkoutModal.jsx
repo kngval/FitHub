@@ -76,6 +76,7 @@ function WorkoutModal({ isOpen, onClose }) {
       isOpen={isOpen}
       onRequestClose={onClose}
       contentLabel="Create Workout"
+      className="modal"
     >
       <h1>Create A New Workout</h1>
       <form
