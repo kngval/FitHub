@@ -3,9 +3,15 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 body{
-    background-color: rgb(243 244 246);
+    background-color: #0f0f0f;
+    color: #fff;
+    font-family: 'Roboto Mono', monospace;
 }
+
+
+
+
 
 
