@@ -12,7 +12,7 @@ function App() {
 
   return (
     <WorkoutContextProvider>
-      <div className="App">
+      <div className="App h-screen">
         <BrowserRouter>
           <Navbar />
           <div className="pages">

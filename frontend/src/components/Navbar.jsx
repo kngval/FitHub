@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useLogout } from "../../hooks/useLogout";
 import { useAuthContext } from "../../hooks/useAuthContext";
+import WorkoutLogo from '../assets/WorkoutLogo.svg'
 
 const Navbar = () => {
   const { logout } = useLogout();
@@ -10,11 +11,15 @@ const Navbar = () => {
     logout();
   };
   return (
-    <header>
-      <div className="bg-white shadow-md p-6 flex justify-between items-center">
+    <header className="border-b-2 border-gray-700">
+      <div className=" shadow-md p-6 flex justify-between items-center">
         <Link to="/">
-          <h1>Workout Buddy</h1>
+        <div className="flex items-center">
+          <img src={WorkoutLogo} alt=""  className="w-10 mr-3" />
+          <h1>FitHub</h1>
+        </div>
         </Link>
+
         <nav>
           {user && (
             <div>
