@@ -16,7 +16,7 @@ const Login = () => {
     <form
       action=""
       onSubmit={handleSubmit}
-      className="bg-white p-5 rounded-md max-w-md mx-auto mt-20 shadow-2xl"
+      className="login p-5 rounded-md max-w-md mx-auto mt-20 shadow-2xl"
     >
       <h2 className="text-2xl font-bold mb-4">Login</h2>
 
@@ -38,7 +38,7 @@ const Login = () => {
 
       <button
         type="submit"
-        className="bg-blue-500 text-white px-4 py-2 rounded-md w-full"
+        className="submitBtn text-white px-4 py-2 rounded-md w-full mt-5 mb-5"
       >
         Submit
       </button>
