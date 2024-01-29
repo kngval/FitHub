@@ -1,4 +1,4 @@
-#FitHub 
+# FitHub 
 
 A full-stack web project for Tracking Workouts ( with Authentication ) 
 
