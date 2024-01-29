@@ -1,6 +1,6 @@
-# Wokrout Tracker
+#FitHub 
 
-A small project for Tracking Workouts ( with Authentication ) 
+A full-stack web project for Tracking Workouts ( with Authentication ) 
 
 ## Technologies used:
 * React
